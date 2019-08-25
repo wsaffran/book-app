@@ -1,6 +1,7 @@
 const express = require('express')
 const graphqlHTTP = require('express-graphql')
 const schema = require('./schema/schema')
+const mongoose = require('mongoose')
 
 const app = express()
 
@@ -9,6 +10,12 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true
 }))
 
-app.listen(4000, () => {
-  console.log('now listening for requests on port 4000')
+mongoose.connect(
+  `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-ik2mz.mongodb.net/test?retryWrites=true&w=majority`,
+  { useNewUrlParser: true }
+).then(() => {
+  app.listen(4000, () => {
+    console.log('now listening for requests on port 4000 and connected to database')
+  })
 })
+.catch(err => console.log)
