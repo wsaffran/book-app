@@ -1,6 +1,6 @@
 {
   "env": {
-    "MONGO_USER": "",
-    "MONGO_PASSWORD": "Vgk5TLxUsKWTy03V3"
+    "MONGO_USER": "willh_saffran",
+    "MONGO_PASSWORD": "node-shop"
   }
 }
